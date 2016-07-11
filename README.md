@@ -1,5 +1,6 @@
 #### Installation
     git clone https://github.com/skorp/react-boilerplate.git react-app
+    cd react-app
     npm install
 
 #### developing
