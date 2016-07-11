@@ -1,0 +1,8 @@
+{
+  parser: "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "max-len": [1, 120, 2, {ignoreComments: true}],
+    "react/prefer-stateless-function" :"off" // disabled because react-hot-loader can't load pure functions in this version
+  }
+}
