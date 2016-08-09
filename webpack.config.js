@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 module.exports = {
     resolve: {
@@ -10,9 +11,9 @@ module.exports = {
         "./src/main.js"
     ],
     output: {
-        path: __dirname + "/dist",
+        path: "./",
         filename: "bundle.js",
-        publicPath: "/dist"
+        publicPath: "/"
     },
     module: {
         preLoaders: [
@@ -27,9 +28,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin( {
+            template: './src/index.html',
+            filename: './index.html'
+        }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-
+        new webpack.NoErrorsPlugin()
     ],
     devServer: {
         hot: true,

@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -7,9 +8,9 @@ module.exports = {
     "./src/main.js"
   ],
   output: {
-    path: __dirname + "/dist",
-    filename: "bundle.js",
-    publicPath: "/dist"
+    path: __dirname + "/built",
+    filename: "bundle.[chunkhash].js",
+    publicPath: "/built"
   },
   module: {
     preLoaders: [
@@ -27,6 +28,20 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production")
+      }
+    }),
+    new HtmlWebpackPlugin( {
+      template: './src/index.html',
+      filename: './index.html',
+      minify: {
+        html5: true,
+        removeComments: true,
+        caseSensitive :true,
+        preserveLineBreaks: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        collapseBooleanAttributes: true,
+        removeEmptyAttributes: true
       }
     })
   ]
